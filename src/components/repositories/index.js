@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import useGithub from "../../hooks/github-hooks";
 import RepositoryItem from "../repository-item";
 import * as S from "./styled";
+import Filter from "./filter";
 //https://docs.github.com/en/rest/git/refs
 
 const Repositories = () => {
   const { githubState, getUserRepos, getUserStarred } = useGithub();
   const [hasUserForSearchrepos, setHasUserForSearchrepos] = useState(false);
+  const [searchText, setSearchText] = useState('');
+  
 
   useEffect(() => {
     if (githubState.user.login) {
@@ -18,6 +21,11 @@ const Repositories = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [githubState.user.login]);
   
+
+  const findRepoHandler = (repoName) =>{
+    setSearchText(repoName);
+  }
+
   return (
     <>
       {hasUserForSearchrepos ? (
@@ -31,11 +39,13 @@ const Repositories = () => {
           </S.WrapperTabList>
           <S.WrapperTabPanel>
             <S.WrapperList>
+            <Filter FindRepo={findRepoHandler}/>
               {githubState.repositories.map((item) => {
                 console.log(item);
                 return <RepositoryItem
                   key={item.id}
                   name={item.name}
+                  searchText={searchText}
                   linkToRepo={item.full_name}
                   fullName={item.full_name}
                   language={item.language}
@@ -50,12 +60,7 @@ const Repositories = () => {
           <S.WrapperTabPanel>
             <S.WrapperList>
               {githubState.starred.map((item) => (
-                <RepositoryItem
-                  key={item.id}
-                  name={item.name}
-                  linkToRepo={item.html_url}
-                  fullName={item.full_name}
-                />
+                <></>
               ))}
             </S.WrapperList>
           </S.WrapperTabPanel>

@@ -6,9 +6,14 @@ import LanguageWrapper from "./language";
 import ForkIco from "./fork";
 import StarIco from './starred'
 
-const RepositoryItem = ({name, linkToRepo, language, pushed_at, description, fork, stargazersCount}) => {
+const RepositoryItem = ({name, searchText, linkToRepo, language, pushed_at, description, fork, stargazersCount}) => {
   
-  console.log(description);
+  const nameUpperCase = name.toUpperCase();
+
+  if (!name.toUpperCase().includes(searchText.toUpperCase())){
+    return null;
+  }
+
   return (
     <S.Wrapper>
       <S.WrapperTitle>

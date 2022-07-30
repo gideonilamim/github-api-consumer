@@ -55,3 +55,45 @@ export const WrapperList = styled.div`
   flex-wrap: nowrap;
   padding-left: 0;
 `;
+
+export const FilterWrapper = styled.div`
+padding-top: 24px;
+padding-bottom: 24px;
+display: flex;
+flex-direction:column;
+border-bottom: 1px solid #d0d7de;
+width:100%;
+`;
+export const FormWrapper = styled.div`
+display: flex;
+
+
+form {
+  width:100%;
+}
+
+form input[type=text] {
+  padding: 5px 12px;
+  width: 600px;
+  font-size: 14px;
+  line-height: 20px;
+  vertical-align: middle;
+  border-radius: 6px;
+  box-shadow: inset 0 1px 0 rgba(208,215,222,02);
+  color: #24292f;
+  border: 1px solid #d0d7de;
+  transition: 80ms black;
+  transition-property: box-shadow,border-color;
+  margin-right: 16px;
+  margin-bottom: 0 ;
+}
+
+.formDiv{
+  display: flex;
+  flex-direction: row;
+  flex: auto;
+  
+}
+  
+}
+`;
