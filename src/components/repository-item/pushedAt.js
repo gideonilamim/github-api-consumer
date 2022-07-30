@@ -51,10 +51,10 @@ import * as S from "./styled";
             updatedText = `${roundHours} ${roundHours > 1? 'hours':'hour'} ago`;   
         }else if(seconds >= 60){
             const roundMinutes = Math.round(minutes);
-            updatedText = `${roundMinutes} ${roundMinutes > 1? 'minute':'minutes'} ago`;   
+            updatedText = `${roundMinutes} ${roundMinutes > 1? 'minutes':'minute'} ago`;   
         }else if(seconds >= 20){
             const roundSeconds = Math.round(seconds);
-            updatedText = `${roundSeconds} 'seconds ago`;     
+            updatedText = `${roundSeconds} seconds ago`;     
         }else if(seconds < 20){
             updatedText = `now`;   
         }
