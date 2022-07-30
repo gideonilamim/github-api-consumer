@@ -1,31 +1,56 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  padding: 8px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  margin: 16px 16px;
-  width: 350px;
-  height: 150px;
-  align-content: center;
+padding-top: 24px;
+padding-bottom: 24px;
+display: flex;
+flex-direction:column;
+border-bottom: 1px solid #d0d7de;
+width:100%;
 `;
 
 export const WrapperTitle = styled.h2`
-  font-size: 18px;
-  font-weight: bold;
-  margin: 8px 0;
-`;
-
-export const WrapperFullName = styled.h2`
-  font-size: 16px;
-  font-weight: bold;
-  margin: 8px 0;
-  color: #2d3748;
+  
 `;
 
 export const WrapperLink = styled.a`
-  font-size: 16px;
-  font-weight: bold;
+font-size: 20px;
+font-weight: 600;
   margin: 8px 0;
-  color: #3182ce;
+  color: #0969da;
+`;
+
+export const LanguageWrapper = styled.div`
+font-size: 12px;
+font-weight: 600;
+  margin: 8px 0;
+  color: #57606a;
+  
+
+  span{
+    margin-right: 16px
+  }
+`;
+
+export const repoContentWrapper = styled.div`
+  font-size: 12px;
+  font-weight: 600;
+  margin: 8px 0;
+  color: #57606a;
+
+  span{
+    margin-right: 16px;
+  }
+`;
+
+export const repoLanguageColor = styled.span`
+position: relative;
+top: 1px;
+display: inline-block;
+width: 12px;
+height: 12px;
+border: 1px solid rgba(27,31,36,0.15);
+border-radius: 50%;
+background-color: ${props => props.language === 'CSS'? '#f1e05a': 'black'};
+/*https://styled-components.com/docs/basics*/
 `;

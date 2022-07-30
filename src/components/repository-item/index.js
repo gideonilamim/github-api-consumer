@@ -1,15 +1,22 @@
 import React from "react";
 import * as S from "./styled";
+import PushedAt from './pushedAt'
 
-const RepositoryItem = ({ name, linkToRepo, fullName }) => {
+
+
+const RepositoryItem = ({name, linkToRepo, language, pushed_at}) => {
+  
   return (
     <S.Wrapper>
-      <S.WrapperTitle>{name}</S.WrapperTitle>
-      <S.WrapperFullName>full name:</S.WrapperFullName>
-      <S.WrapperLink href={linkToRepo} target="_blank" rel="noreferrer">
-        {fullName}
-      </S.WrapperLink>
-    </S.Wrapper>
+      <S.WrapperTitle>
+          <S.WrapperLink href={linkToRepo} target="_blank" rel="noreferrer">{name}</S.WrapperLink>
+      </S.WrapperTitle>
+           <S.repoContentWrapper> 
+              
+              <span>{language}</span>
+              <PushedAt pushed_at={pushed_at}/>
+            </S.repoContentWrapper>
+     </S.Wrapper>
   );
 };
 
