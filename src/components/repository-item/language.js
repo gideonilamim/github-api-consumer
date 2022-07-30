@@ -11,7 +11,6 @@ const LanguageWrapper = ({language}) =>{
         }else{
           color = null;
         }
-      console.log(color? true: false);
         return color;
     }
     const isVisible =() =>{

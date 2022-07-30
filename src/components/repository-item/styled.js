@@ -48,13 +48,25 @@ background-color: ${props => props.color};
 /*https://styled-components.com/docs/basics*/
 `;
 
-export const DescriptionText = styled.span`
+export const DescriptionText = styled.div`
 display: inline-block;
 padding-right: 24px;
 margin-bottom: 8px;
 color: #57606a;
 width: 74.99999997%
 margin-top: 0;
+`;
 
+export const Ico = styled.span`
+    margin-right: 16px;
+    color: #57606a; 
 
+svg{
+    display: inline-block;
+    overflow: visible;
+    vertical-align: text-bottom;
+    fill: currentColor;
+    margin-right: 3px;
+     
+}
 `;

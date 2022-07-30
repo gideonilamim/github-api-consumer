@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import useGithub from "../../hooks/github-hooks";
 import RepositoryItem from "../repository-item";
 import * as S from "./styled";
+//https://docs.github.com/en/rest/git/refs
 
 const Repositories = () => {
   const { githubState, getUserRepos, getUserStarred } = useGithub();
@@ -16,7 +17,7 @@ const Repositories = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [githubState.user.login]);
-
+  
   return (
     <>
       {hasUserForSearchrepos ? (
@@ -30,8 +31,9 @@ const Repositories = () => {
           </S.WrapperTabList>
           <S.WrapperTabPanel>
             <S.WrapperList>
-              {githubState.repositories.map((item) => (
-                <RepositoryItem
+              {githubState.repositories.map((item) => {
+                console.log(item);
+                return <RepositoryItem
                   key={item.id}
                   name={item.name}
                   linkToRepo={item.full_name}
@@ -39,8 +41,10 @@ const Repositories = () => {
                   language={item.language}
                   pushed_at={item.pushed_at}
                   description={item.description}
-                />
-              ))}
+                  fork={item.fork}
+                  stargazersCount={item.stargazers_count}
+                  />
+              })}
             </S.WrapperList>
           </S.WrapperTabPanel>
           <S.WrapperTabPanel>
