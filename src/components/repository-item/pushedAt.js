@@ -52,7 +52,10 @@ import * as S from "./styled";
         }else if(seconds >= 60){
             const roundMinutes = Math.round(minutes);
             updatedText = `${roundMinutes} ${roundMinutes > 1? 'minute':'minutes'} ago`;   
-        }else if(minutes < 60){
+        }else if(seconds >= 20){
+            const roundSeconds = Math.round(seconds);
+            updatedText = `${roundSeconds} 'seconds ago`;     
+        }else if(seconds < 20){
             updatedText = `now`;   
         }
 
