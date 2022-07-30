@@ -12,13 +12,16 @@ const Profile = () => {
         <div>
           <h1>{githubState.user.name}</h1>
           <S.WrapperUserGeneric>
-            <h3>Username:</h3>
-            <a
+            <h2>{githubState.user.login}</h2>
+          </S.WrapperUserGeneric>
+          
+          <S.WrapperUserGeneric>
+            <a className="btn"
               href={githubState.user.html_url}
               target="_blank"
               rel="noreferrer"
             >
-              {githubState.user.login}
+              visit github profile
             </a>
           </S.WrapperUserGeneric>
           <S.WrapperUserGeneric>
