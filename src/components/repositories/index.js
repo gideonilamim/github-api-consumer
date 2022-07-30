@@ -30,14 +30,18 @@ const Repositories = () => {
           </S.WrapperTabList>
           <S.WrapperTabPanel>
             <S.WrapperList>
-              {githubState.repositories.map((item) => (
+              {githubState.repositories.map((item) =>{
+                
+                return(
                 <RepositoryItem
                   key={item.id}
                   name={item.name}
                   linkToRepo={item.full_name}
                   fullName={item.full_name}
+                  language={item.language}
+                  pushed_at={item.pushed_at}
                 />
-              ))}
+              )})}
             </S.WrapperList>
           </S.WrapperTabPanel>
           <S.WrapperTabPanel>

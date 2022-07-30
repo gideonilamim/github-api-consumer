@@ -5,6 +5,7 @@ export const WrapperTabs = styled(Tabs)`
   font-size: 16px;
   width: 100%;
   margin-top: 16px;
+  background-color: #ffffff;
 `;
 
 export const WrapperTabList = styled(TabList)`
@@ -21,7 +22,7 @@ export const WrapperTab = styled(Tab)`
   padding: 16px;
   user-select: none;
   cursor: pointer;
-  z-index: 99999;
+  z-index: 9;
   background-color: "#fff";
   margin: 8px;
 
@@ -50,5 +51,7 @@ WrapperTabPanel.tabsRole = "TabPanel";
 export const WrapperList = styled.div`
   display: flex;
   justify-content: flex-start;
-  flex-wrap: wrap;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  padding-left: 0;
 `;
