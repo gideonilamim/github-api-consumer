@@ -2,11 +2,9 @@ import React from "react";
 import * as S from "./styled";
 import PushedAt from './pushedAt'
 import LanguageColors from "./languageColors";
+import LanguageWrapper from "./language";
 
-const mystyle = {  
-  border: "1px solid rgba(27,31,36,0.15);",  
-  backgroundColor: "#f1e05a;",    
-}; 
+
 
 const RepositoryItem = ({name, linkToRepo, language, pushed_at}) => {
   
@@ -32,8 +30,7 @@ const RepositoryItem = ({name, linkToRepo, language, pushed_at}) => {
           <S.WrapperLink href={linkToRepo} target="_blank" rel="noreferrer">{name}</S.WrapperLink>
       </S.WrapperTitle>
            <S.repoContentWrapper> 
-              <S.repoLanguageColor visibility={() => isVisible} color={() => getLanguageColor()}/>
-              <span>{language}</span>
+              <LanguageWrapper language={language}/>
               <PushedAt pushed_at={pushed_at}/>
             </S.repoContentWrapper>
      </S.Wrapper>
