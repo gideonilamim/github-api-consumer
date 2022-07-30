@@ -47,3 +47,14 @@ border-radius: 50%;
 background-color: ${props => props.color};
 /*https://styled-components.com/docs/basics*/
 `;
+
+export const DescriptionText = styled.span`
+display: inline-block;
+padding-right: 24px;
+margin-bottom: 8px;
+color: #57606a;
+width: 74.99999997%
+margin-top: 0;
+
+
+`;
