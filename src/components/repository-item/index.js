@@ -8,7 +8,7 @@ import StarIco from './starred'
 
 const RepositoryItem = ({name, searchText, linkToRepo, language, pushed_at, description, fork, stargazersCount}) => {
   
-  const nameUpperCase = name.toUpperCase();
+
 
   if (!name.toUpperCase().includes(searchText.toUpperCase())){
     return null;

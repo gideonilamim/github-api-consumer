@@ -5,12 +5,39 @@ import * as S from "./styled";
 import Filter from "./filter";
 //https://docs.github.com/en/rest/git/refs
 
+const getLanguages =(repos)=>{
+  const allLanguages = repos.map((item) => {
+      if(item.language !== null){
+        return (item.language);
+      }else{return} 
+  });
+
+  return [... new Set(allLanguages)];
+}
+
+const getSortedRepos = (repos) =>{
+  
+  //https://www.youtube.com/watch?v=RsFBsBep-hA
+  const compareFunction = (a,b)=>{
+      console.log('a = '+ a.id);
+      //if a - b < 0   a comes first
+      return b.id - a.id;
+  }
+
+  const sortedRepos = repos.sort(compareFunction);
+   
+  return sortedRepos;  
+  
+}
+
 const Repositories = () => {
   const { githubState, getUserRepos, getUserStarred } = useGithub();
   const [hasUserForSearchrepos, setHasUserForSearchrepos] = useState(false);
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState('');//every time I update the value of searchText, it renders the repositories list
+    
+  const languages = getLanguages(githubState.repositories);
+  const sortedRepositories = getSortedRepos(githubState.repositories);
   
-
   useEffect(() => {
     if (githubState.user.login) {
       getUserRepos(githubState.user.login);
@@ -40,8 +67,8 @@ const Repositories = () => {
           <S.WrapperTabPanel>
             <S.WrapperList>
             <Filter FindRepo={findRepoHandler}/>
-              {githubState.repositories.map((item) => {
-                console.log(item);
+              {sortedRepositories.map((item) => {
+                //console.log(item);
                 return <RepositoryItem
                   key={item.id}
                   name={item.name}

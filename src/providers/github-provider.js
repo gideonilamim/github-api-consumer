@@ -68,7 +68,7 @@ const GithubProvider = ({ children }) => {
 
   const getUserRepos = (username) => {
     api.get(`users/${username}/repos`).then(({ data }) => {
-      console.log("data: " + JSON.stringify(data));
+      //console.log("data: " + JSON.stringify(data));
       setGithubState((prevState) => ({
         ...prevState,
         repositories: data,

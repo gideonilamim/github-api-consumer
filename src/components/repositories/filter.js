@@ -12,7 +12,7 @@ const Filter = ({FindRepo}) => {
                         <form onSubmit={formSubmitHandler} accept-charset="UTF-8">
                             <div className="formDiv"> 
                                 <input  type="text" placeholder="pesquisa..." onChange={(event)=> FindRepo(event.target.value)}/> 
-                                <button>sort by</button>
+                                <button>languages</button>
                             </div>
                         </form>
                     </S.FormWrapper>
