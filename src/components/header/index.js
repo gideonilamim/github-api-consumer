@@ -13,21 +13,23 @@ const Header = () => {
   };
 
   return (
-    <header>
-      <S.Wrapper>
-        <S.LogoWrapper>
-          <LogoIco/>
-        </S.LogoWrapper>
-        <input
-          type="text"
-          placeholder="enter github user..."
-          onChange={(event) => setUsernameForSearch(event.target.value)}
-        />
-        <button type="submit" onClick={submitGetUser}>
-          Search
-        </button>
-      </S.Wrapper>
-    </header>
+ 
+      <S.HeaderWrapper>
+        <S.ContentWrapper>
+          <S.LogoWrapper>
+            <LogoIco/>
+          </S.LogoWrapper>
+          <input
+            type="text"
+            placeholder="enter github user..."
+            onChange={(event) => setUsernameForSearch(event.target.value)}
+          />
+          <button type="submit" onClick={submitGetUser}>
+            Search
+          </button> 
+        </S.ContentWrapper>
+      </S.HeaderWrapper>
+   
   );
 };
 

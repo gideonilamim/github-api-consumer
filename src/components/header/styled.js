@@ -1,13 +1,9 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+export const HeaderWrapper = styled.header`
   padding: 0px;
   border-bottom: 1px solid rgb(54, 54, 54);
   height: 60px;
-  align-items: center;
   width: 100%;
   top: 0;
   left:0;
@@ -15,12 +11,20 @@ export const Wrapper = styled.div`
   background-color: #24292f;
   position: fixed;
   z-index: 999;
-  padding: 16px;
+  padding: auto;
   color: #fff;
-
-  
+`
+  export const ContentWrapper = styled.div`
+  margin-top:10px;
+  max-width: 1280px;
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 
   input {
+    min-width:200px;
     border: 1px solid #ccc;
     border-radius: 8px;
     width: 30%;
