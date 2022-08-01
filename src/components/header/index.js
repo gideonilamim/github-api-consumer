@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import * as S from "./styled";
 import useGithub from "../../hooks/github-hooks";
-import githubImg from "./images/githubIco.png";
-import NavBar from "../UI/dropdownMenu";
 import LogoIco from "../images/logoIco";
 
 const Header = () => {
