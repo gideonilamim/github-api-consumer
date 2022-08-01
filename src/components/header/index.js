@@ -3,6 +3,7 @@ import * as S from "./styled";
 import useGithub from "../../hooks/github-hooks";
 import githubImg from "./images/githubIco.png";
 import NavBar from "../UI/dropdownMenu";
+import LogoIco from "../images/logoIco";
 
 const Header = () => {
   const { getUser } = useGithub();
@@ -16,18 +17,17 @@ const Header = () => {
   return (
     <header>
       <S.Wrapper>
-        <div className="githubImg">
-          <img src={githubImg}  />
-        </div>
+        <S.LogoWrapper>
+          <LogoIco/>
+        </S.LogoWrapper>
         <input
           type="text"
-          placeholder="Digite o username para pesquisa..."
+          placeholder="enter github user..."
           onChange={(event) => setUsernameForSearch(event.target.value)}
         />
         <button type="submit" onClick={submitGetUser}>
-          Buscar
+          Search
         </button>
-        <NavBar></NavBar>
       </S.Wrapper>
     </header>
   );
