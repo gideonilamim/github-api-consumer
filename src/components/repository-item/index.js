@@ -6,11 +6,16 @@ import LanguageWrapper from "./language";
 import ForkIco from "./fork";
 import StarIco from './starred'
 
-const RepositoryItem = ({name, searchText, linkToRepo, language, pushed_at, description, fork, stargazersCount}) => {
+const RepositoryItem = ({name, searchText, linkToRepo, language, pushed_at, description, fork, stargazersCount, targetLanguage}) => {
   
 
 
   if (!name.toUpperCase().includes(searchText.toUpperCase())){
+    return null;
+  }
+
+
+  if (targetLanguage !== language && targetLanguage !== 'all'){
     return null;
   }
 

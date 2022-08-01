@@ -67,11 +67,25 @@ const GithubProvider = ({ children }) => {
   };
 
   const getUserRepos = (username) => {
+
+    const sortRepositories = (repos) =>{
+
+      //https://www.youtube.com/watch?v=RsFBsBep-hA
+      const compareFunction = (a,b)=>{
+          //if a - b < 0   a comes first
+          return b.id - a.id;
+      }
+      const sortedRepos = repos.sort(compareFunction);
+       
+      return sortedRepos;  
+      
+    }
+
     api.get(`users/${username}/repos`).then(({ data }) => {
       //console.log("data: " + JSON.stringify(data));
       setGithubState((prevState) => ({
         ...prevState,
-        repositories: data,
+        repositories: sortRepositories(data),
       }));
     });
   };

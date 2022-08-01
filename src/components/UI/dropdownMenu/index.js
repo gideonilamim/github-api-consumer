@@ -14,13 +14,15 @@ const MenuButton = (props) =>{
         setOpen(!open);
         
     }
-
+    const selectHandler = (option) => {
+        props.onSelect(option);   
+    }
     return  <>
                 <Button onClick={openMenuHandler}> 
                         {props.name}
                         <S.ArrowIco/>
                 </Button>
-                {(open && props.content && props.content.length > 0 ) && <DropDownMenu openToggle={openMenuHandler}>{props.content}</DropDownMenu>}
+                {(open && props.content && props.content.length > 0 ) && <DropDownMenu onSelect={selectHandler} openToggle={openMenuHandler}>{props.content}</DropDownMenu>}
             </>;
 }
 export default MenuButton;

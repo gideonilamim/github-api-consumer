@@ -19,7 +19,7 @@ const getLanguages =(repos)=>{
   return [... new Set(data)];
 }
 
-const getSortedRepos = (repos) =>{
+const sortRepositories = (repos) =>{
   
   //https://www.youtube.com/watch?v=RsFBsBep-hA
   const compareFunction = (a,b)=>{
@@ -38,11 +38,12 @@ const Repositories = () => {
   const { githubState, getUserRepos, getUserStarred } = useGithub();
   const [hasUserForSearchrepos, setHasUserForSearchrepos] = useState(false);
   const [searchText, setSearchText] = useState('');//every time I update the value of searchText, it renders the repositories list
-    
+  const [targetLanguage, setTargetLanguage] = useState('all');
+
   const languages = getLanguages(githubState.repositories);
-  const sortedRepositories = getSortedRepos(githubState.repositories);
+  const repositories = githubState.repositories;
   
- 
+  
 
   useEffect(() => {
     if (githubState.user.login) {
@@ -50,11 +51,12 @@ const Repositories = () => {
       getUserStarred(githubState.user.login);
     }
     setHasUserForSearchrepos(githubState.repositories);
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [githubState.user.login]);
   
-
+  const languageHandler = (language) => {
+    setTargetLanguage(language);
+  }
   const findRepoHandler = (repoName) =>{
     setSearchText(repoName);
   }
@@ -72,8 +74,8 @@ const Repositories = () => {
           </S.WrapperTabList>
           <S.WrapperTabPanel>
             <S.WrapperList>
-            <Filter languages={languages} FindRepo={findRepoHandler}/>
-              {sortedRepositories.map((item) => {
+            <Filter languages={languages} displayLanguage={languageHandler} FindRepo={findRepoHandler}/>
+              {githubState.repositories.map((item) => {
                 //console.log(item);
                 return <RepositoryItem
                   key={item.id}
@@ -82,6 +84,7 @@ const Repositories = () => {
                   linkToRepo={item.full_name}
                   fullName={item.full_name}
                   language={item.language}
+                  targetLanguage={targetLanguage}
                   pushed_at={item.pushed_at}
                   description={item.description}
                   fork={item.fork}
