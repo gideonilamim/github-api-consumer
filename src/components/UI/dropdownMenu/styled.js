@@ -21,7 +21,7 @@ export const MenuButton = styled.button`
     margin-right: 5px;
     
 `
-export const ArrowIco = styled.ul`
+export const ArrowIco = styled.div`
     margin-left: 5px;
     display: inline-block;
     width: 0;
@@ -34,9 +34,6 @@ export const ArrowIco = styled.ul`
     border-bottom-color: transparent;
     border-left-color: transparent;
 `
-
-
-
 
 export const DropDownMenu = styled.div`
     position: relative; 
@@ -72,10 +69,16 @@ export const MenuItem = styled.div`
         padding: 0.5rem;
         border-bottom:1px solid #474a4d;
         margin-top:3px;
+        
 
         :hover{ 
             background-color: #525357;
             margin-left: 14px;  
+        }
+
+        .checked {
+            margin-right: 10px;
+            fill: #fff;
         }
 `
 

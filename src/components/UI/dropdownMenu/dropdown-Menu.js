@@ -1,26 +1,32 @@
 import React, {Children, useState} from "react";
+import CheckedIco from "../../images/checkedIco";
 import * as S from './styled'
 
-const MenuItem = ({children, onClick}) =>{
-
+const MenuItem = ({children, onClick, selection}) =>{
+    const [selected, setSelected] = useState(selection);
+    
+    const onItemClick = (item) => {
+        onClick(item);
+        setSelected(item);
+    }
 
     const items = children.map((item) =>{
-        return <S.MenuItem onClick={()=>onClick(item)}><a>{item}</a></S.MenuItem>
+          return <S.MenuItem onClick={()=>onItemClick(item)}>
+            {item === selected && <CheckedIco className="checked"/>}
+            <a>{item}</a>
+        </S.MenuItem>
     });
-    //https://stackoverflow.com/questions/6279672/fixed-positioned-div-inside-another-div
     return items;
 }
 
 
-//<S.Background onClick={openToggle}/>
-const DropDownMenu = ({children, openToggle, onSelect}) =>{
 
-    
+const DropDownMenu = ({children, openToggle, onSelect, selection}) =>{
 
     return (<S.DropDownMenu>
                 <S.Background onClick={openToggle}/>
                 <S.dropDownBox>
-                    <MenuItem onClick={(item)=>onSelect(item)}>{children}</MenuItem>
+                    <MenuItem onClick={(item)=>onSelect(item)} selection={selection}>{children}</MenuItem>
                 </S.dropDownBox>
             </S.DropDownMenu>);
 

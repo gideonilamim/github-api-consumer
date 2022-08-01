@@ -14,20 +14,21 @@ const Filter = ({FindRepo, languages, onSorting, displayLanguage}) => {
         }
 
         const selectLanguage = (language) => {
-            console.log('language' +language);
             displayLanguage(language)
         }
 
         const languageOptions = () =>{ 
+            if(languages.length === 0){
+                return;
+            }
             const languageOptions = ['all'];
             languages.map((language) => {
-               
-                languageOptions.push(language);
-            })
-             console.log(languageOptions);
-            return languageOptions
+                            languageOptions.push(language);
+            });
+            return languageOptions;
         }
-        
+
+      
 
         const sortBy = ["creation date", "Last updated", "stars"]
 
@@ -38,11 +39,10 @@ const Filter = ({FindRepo, languages, onSorting, displayLanguage}) => {
                                 <input  type="text" placeholder="pesquisa..." onChange={(event)=> FindRepo(event.target.value)}/>                            
                             </div>
                         </form>
-                        <MenuButton name="Languages" onSelect={selectLanguage} content ={languageOptions()}/>
-                        <MenuButton name="sort by" onSelect={sortbyHandler} content ={sortBy}/>
+                        <MenuButton name="Languages" label='' select='all' onSelect={selectLanguage} content ={languageOptions()}/>
+                        
                     </S.FormWrapper>
                 </S.FilterWrapper>;
 }
 
 export default Filter;
-//onChange={(event) => setUsernameForSearch(event.target.value)}
