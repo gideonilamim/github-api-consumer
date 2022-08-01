@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import * as S from "./styled";
 import useGithub from "../../hooks/github-hooks";
 import githubImg from "./images/githubIco.png";
+import NavBar from "../UI/dropdownMenu";
 
 const Header = () => {
   const { getUser } = useGithub();
@@ -26,6 +27,7 @@ const Header = () => {
         <button type="submit" onClick={submitGetUser}>
           Buscar
         </button>
+        <NavBar></NavBar>
       </S.Wrapper>
     </header>
   );

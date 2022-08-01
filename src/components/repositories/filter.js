@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import NavBar from "../UI/dropdownMenu";
+import MenuButton from "../UI/dropdownMenu";
 import * as S from "./styled"
 
-const Filter = ({FindRepo}) => {
+const Filter = ({FindRepo, languages}) => {
 
         const formSubmitHandler = (event) =>{
             event.preventDefault();
@@ -12,7 +14,12 @@ const Filter = ({FindRepo}) => {
                         <form onSubmit={formSubmitHandler} accept-charset="UTF-8">
                             <div className="formDiv"> 
                                 <input  type="text" placeholder="pesquisa..." onChange={(event)=> FindRepo(event.target.value)}/> 
-                                <button>languages</button>
+                                <MenuButton content ={languages}/>
+                            <MenuButton content ={["JavaScript",
+                            "yasmim",
+                            "Gabriel",
+                            "CSS",
+                            "Java"]}/>
                             </div>
                         </form>
                     </S.FormWrapper>

@@ -9,7 +9,7 @@ const getLanguages =(repos)=>{
   const allLanguages = repos.map((item) => {
       if(item.language !== null){
         return (item.language);
-      }else{return} 
+      }else{} 
   });
 
   return [... new Set(allLanguages)];
@@ -38,6 +38,8 @@ const Repositories = () => {
   const languages = getLanguages(githubState.repositories);
   const sortedRepositories = getSortedRepos(githubState.repositories);
   
+  //console.log(languages);
+
   useEffect(() => {
     if (githubState.user.login) {
       getUserRepos(githubState.user.login);
@@ -66,7 +68,7 @@ const Repositories = () => {
           </S.WrapperTabList>
           <S.WrapperTabPanel>
             <S.WrapperList>
-            <Filter FindRepo={findRepoHandler}/>
+            <Filter languages={languages} FindRepo={findRepoHandler}/>
               {sortedRepositories.map((item) => {
                 //console.log(item);
                 return <RepositoryItem
