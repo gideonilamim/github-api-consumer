@@ -10,29 +10,47 @@ export const WrapperTabs = styled(Tabs)`
 
 export const WrapperTabList = styled(TabList)`
   list-style-type: none;
-  padding: 4px;
+  padding: 0px;
   display: flex;
   margin: 0;
+  border-bottom: 1px solid #d0d7de;
 `;
 WrapperTabList.tabsRole = "TabList";
 
 export const WrapperTab = styled(Tab)`
-  border-radius: 16px;
-  border: 1px solid #ccc;
-  padding: 16px;
-  user-select: none;
-  cursor: pointer;
-  z-index: 9;
-  background-color: "#fff";
-  margin: 8px;
-
+font-weight: 600;
+color: var(--color-fg-default);
+margin-botton:0;
+margin-left:10px;
+margin-right:10px;
+border-bottom: 3px solid #fd8c63;
+position: relative;
+    display: flex;
+    padding: 0 8px;
+    font-size: 14px;
+    line-height: 30px;
+    text-align: center;
+    white-space: nowrap;
+    cursor: pointer;
+    background-color: transparent;
+    align-items: center;
+    
+  ::before{    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    min-height: 48px;
+    content: "";
+    transform: translateX(-50%) translateY(-50%);
+  }
   &:focus {
     outline: none;
   }
-
-  &.is-selected {
-    box-shadow: 3px 2px 10px rgba(0, 0, 0, 0.2);
+  span {
+    margin-left: 5px;
   }
+  
 `;
 WrapperTab.tabsRole = "Tab";
 
