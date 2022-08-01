@@ -9,19 +9,20 @@ const Filter = ({FindRepo, languages}) => {
             event.preventDefault();
         }
 
+
+
+        const sortBy = ["creation date", "Last updated", "stars"]
+
         return <S.FilterWrapper>
                     <S.FormWrapper>
                         <form onSubmit={formSubmitHandler} accept-charset="UTF-8">
                             <div className="formDiv"> 
                                 <input  type="text" placeholder="pesquisa..." onChange={(event)=> FindRepo(event.target.value)}/> 
-                                <MenuButton content ={languages}/>
-                            <MenuButton content ={["JavaScript",
-                            "yasmim",
-                            "Gabriel",
-                            "CSS",
-                            "Java"]}/>
+                                
                             </div>
                         </form>
+                        <MenuButton name="Languages" content ={languages}/>
+                        <MenuButton name="sort by" content ={sortBy}/>
                     </S.FormWrapper>
                 </S.FilterWrapper>;
 }

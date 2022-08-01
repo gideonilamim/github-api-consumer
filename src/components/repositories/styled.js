@@ -74,7 +74,7 @@ form {
 
 form input[type=text] {
   padding: 5px 12px;
-  width: 600px;
+  width: 100%;
   font-size: 14px;
   line-height: 20px;
   vertical-align: middle;

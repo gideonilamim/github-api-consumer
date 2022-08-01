@@ -5,8 +5,7 @@ const MenuItem = ({children}) =>{
     const items = children.map((item) =>{
         return <S.MenuItem><a>{item}</a></S.MenuItem>
     });
-
-    https://stackoverflow.com/questions/6279672/fixed-positioned-div-inside-another-div
+    //https://stackoverflow.com/questions/6279672/fixed-positioned-div-inside-another-div
     return items;
 }
 
@@ -17,7 +16,7 @@ const DropDownMenu = ({children, openToggle}) =>{
     return (<S.DropDownMenu>
                 <S.Background onClick={openToggle}/>
                 <S.dropDownBox>
-                     {children && <MenuItem>{children}</MenuItem>}
+                     <MenuItem>{children}</MenuItem>
                 </S.dropDownBox>
             </S.DropDownMenu>);
 

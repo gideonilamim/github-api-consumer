@@ -9,10 +9,14 @@ const getLanguages =(repos)=>{
   const allLanguages = repos.map((item) => {
       if(item.language !== null){
         return (item.language);
-      }else{} 
+      }
   });
 
-  return [... new Set(allLanguages)];
+  const data = allLanguages.filter(function( element ) {
+    return element !== undefined;
+ })
+
+  return [... new Set(data)];
 }
 
 const getSortedRepos = (repos) =>{
@@ -38,7 +42,7 @@ const Repositories = () => {
   const languages = getLanguages(githubState.repositories);
   const sortedRepositories = getSortedRepos(githubState.repositories);
   
-  //console.log(languages);
+ 
 
   useEffect(() => {
     if (githubState.user.login) {
