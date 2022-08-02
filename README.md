@@ -7,9 +7,9 @@ this project is a challenge proposed by Digital Innovation ONE.
 it's a wondeful website full of courses and much more. Check it out!
 
 ## Challenge
-As part of the challenge, I decided to added style and new features to the original project. No I forked the original repo and worked on it.
+As part of the challenge, I decided to add style and new features to the original project. So, I forked the original repo and worked on it.
 
-Here we can see the original layout and the new layout
+Here we can see the original layout and the new layout side by side.
 
 original layout            |  new layout
 :-------------------------:|:-------------------------:
