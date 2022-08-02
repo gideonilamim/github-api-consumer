@@ -1,24 +1,45 @@
-# Getting Started with Create React App
+# DIO - desafio de projeto
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## About project
+before starting, I would like to give a special thanks to @[benits](https://github.com/benits)
 
-This repository was created in order to show how we can create a frontend application with reusable components.
+this project is a challenge proposed by Digital Innovation ONE. 
+it's a wondeful website full of courses and much more. Check it out!
 
-We will create an application using the github public api.
+## Challenge
+As part of the challenge, I decided to added style and new features to the original project. No I forked the original repo and worked on it.
 
-### Features
+Here we can see the original layout and the new layout
 
-- Search infos by username
-- Search repo by username
-- Search starred by username
+original layout            |  new layout
+:-------------------------:|:-------------------------:
+![old](./image/snapshot-1.png)  |  ![new](./image/snapshot-2.png)
 
-### Preview
+## Acomplishments
 
-Print of the finished project.
+### Layout
+I changed the layout, so that it looks a little bit more like gitHub page.
 
-![plot](./image/snapshot-1.png)
+I placed the user info next to the repositories list.
+
+And changed the looks of the repository items on the list.
+![old](./image/repoItem.png)
+
+### New features
+
+I also added a repository search field where you can search for repos as you type. 
+![searchbar](./image/search.png)
+
+There is also a dropdown menu where you can select the languages you want to be displayed.
+![searchbar](./image/dropdownMenu.png)
+
+I added a color circle next to the repository language
+
+I added a tab with the number of repositories. I also fixed the number of data retrieved. I was only able to retrieve 30 repos in total. Now it can fetch all repos.
+![searchbar](./image/tab.png)
+
 
 ### Libraries used
 
