@@ -1,6 +1,4 @@
-# DIO - desafio de projeto
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# DIO - desafio de projeto - REACT JS
 
 ## About project
 before starting, I would like to give a special thanks to @[benits](https://github.com/benits)
