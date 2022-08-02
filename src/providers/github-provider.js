@@ -66,7 +66,7 @@ const GithubProvider = ({ children }) => {
       });
   };
 
-  const getUserRepos = (username) => {
+  const getUserRepos = async (username) => {
 
     const sortRepositories = (repos) =>{
 
@@ -76,18 +76,31 @@ const GithubProvider = ({ children }) => {
           return b.id - a.id;
       }
       const sortedRepos = repos.sort(compareFunction);
-       
+      console.log(repos);
       return sortedRepos;  
       
     }
+    let allRepositories = [];
+    let stop = false;
+    let i = 1;
 
-    api.get(`users/${username}/repos`).then(({ data }) => {
+    do {
+      await api.get(`users/${username}/repos?page=${i}`).then(({ data }) => {
       //console.log("data: " + JSON.stringify(data));
-      setGithubState((prevState) => ({
-        ...prevState,
-        repositories: sortRepositories(data),
-      }));
-    });
+        if(data !== 30){stop = true}
+        allRepositories = allRepositories.concat(data);
+      });
+      i = i+1;
+    }while(stop = false || i < 15);
+    
+    console.log(allRepositories);
+    
+    setGithubState((prevState) => ({
+      ...prevState,
+      repositories: sortRepositories(allRepositories),
+      
+    }));
+ 
   };
 
   const getUserStarred = (username) => {
