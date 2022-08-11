@@ -73,13 +73,14 @@ const GithubProvider = ({ children }) => {
       //https://www.youtube.com/watch?v=RsFBsBep-hA
       const compareFunction = (a,b)=>{
           //if a - b < 0   a comes first
-          return b.id - a.id;
+          const a_date = new Date(a.pushed_at).getTime();
+          const b_date = new Date(b.pushed_at).getTime();
+          return b_date - a_date;
       }
       const sortedRepos = repos.sort(compareFunction);
-      console.log(repos);
-      return sortedRepos;  
-      
+      return sortedRepos;     
     }
+    
     let allRepositories = [];
     let stop = false;
     let i = 1;
