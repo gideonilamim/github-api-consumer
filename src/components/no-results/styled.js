@@ -3,9 +3,8 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
  
   display: flex;
-  justify-content: center;
   margin-top:200px;
- 
+  justify-content: center;
 
   h1 {
     

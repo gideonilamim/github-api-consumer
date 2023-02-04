@@ -8,9 +8,10 @@ export const WrapperLayout = styled.section`
   width:1280px;
   box-sizing: border-box;
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
-font-size: 14px;
-line-height: 1.5;
-padding-right: 32px ;
-padding-left: 32px ;
+  font-size: 14px;
+  line-height: 1.5;
+  padding-right: 32px ;
+  padding-left: 32px ;
+  justify-content: center;
   
 `;

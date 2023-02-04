@@ -3,18 +3,18 @@ import NavBar from "../UI/dropdownMenu";
 import MenuButton from "../UI/dropdownMenu";
 import * as S from "./styled"
 
-const Filter = ({FindRepo, languages, onSorting, displayLanguage}) => {
+const Filter = ({FindRepo, languages, sortingOptions, onSortRepositories, onDisplayLanguage}) => {
 
         const formSubmitHandler = (event) =>{
             event.preventDefault();
         }
 
         const sortbyHandler = (option) => {
-            console.log(option);
+            onSortRepositories(option);
         }
 
         const selectLanguage = (language) => {
-            displayLanguage(language)
+            onDisplayLanguage(language)
         }
 
         const languageOptions = () =>{ 
@@ -39,8 +39,19 @@ const Filter = ({FindRepo, languages, onSorting, displayLanguage}) => {
                                 <input  type="text" placeholder="pesquisa..." onChange={(event)=> FindRepo(event.target.value)}/>                            
                             </div>
                         </form>
-                        <MenuButton name="Languages" label='' select='all' onSelect={selectLanguage} content ={languageOptions()}/>
-                        
+                        <MenuButton 
+                            name="Languages" 
+                            label='' 
+                            select='all' 
+                            onSelect={selectLanguage} 
+                            content ={languageOptions()}/>
+
+                        <MenuButton 
+                            name="Sort" 
+                            label='' 
+                            select={sortingOptions[0]}
+                            onSelect={sortbyHandler}
+                            content ={sortingOptions}/>
                     </S.FormWrapper>
                 </S.FilterWrapper>;
 }

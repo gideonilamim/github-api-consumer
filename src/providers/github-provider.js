@@ -66,7 +66,7 @@ const GithubProvider = ({ children }) => {
       });
   };
 
-  const getUserRepos = async (username) => {
+   const getUserRepos = async (username) => {
 
     const sortRepositories = (repos) =>{
 
@@ -80,7 +80,7 @@ const GithubProvider = ({ children }) => {
       const sortedRepos = repos.sort(compareFunction);
       return sortedRepos;     
     }
-    
+
     let allRepositories = [];
     let stop = false;
     let i = 1;
@@ -94,11 +94,9 @@ const GithubProvider = ({ children }) => {
       i = i+1;
     }while(stop = false || i < 15);
     
-    console.log(allRepositories);
-    
     setGithubState((prevState) => ({
       ...prevState,
-      repositories: sortRepositories(allRepositories),
+      repositories: allRepositories,
       
     }));
  
