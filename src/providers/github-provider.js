@@ -8,8 +8,8 @@ export const GithubContext = createContext({
   starred: [],
 });
 
-const GithubProvider = ({ children }) => {
-  const [githubState, setGithubState] = useState({
+const initialstate =
+  {
     hasUser: false,
     loading: false,
     user: {
@@ -28,14 +28,20 @@ const GithubProvider = ({ children }) => {
     },
     repositories: [],
     starred: [],
-  });
+  };
+
+const GithubProvider = ({ children }) => {
+  const [githubState, setGithubState] = useState(initialstate);
+
+  
 
   const getUser = (username) => {
+    setGithubState(initialstate);
     setGithubState((prevState) => ({
       ...prevState,
       loading: !prevState.loading,
     }));
-
+    console.log(githubState)
     api
       .get(`users/${username}`)
       .then(({ data }) => {
@@ -68,7 +74,7 @@ const GithubProvider = ({ children }) => {
 
    const getUserRepos = async (username) => {
 
-    const sortRepositories = (repos) =>{
+    /*const sortRepositories = (repos) =>{
 
       //https://www.youtube.com/watch?v=RsFBsBep-hA
       const compareFunction = (a,b)=>{
@@ -79,13 +85,14 @@ const GithubProvider = ({ children }) => {
       }
       const sortedRepos = repos.sort(compareFunction);
       return sortedRepos;     
-    }
+    }*/
 
     let allRepositories = [];
     let stop = false;
     let i = 1;
 
     do {
+      //get all the pages and concatenate them
       await api.get(`users/${username}/repos?page=${i}`).then(({ data }) => {
       //console.log("data: " + JSON.stringify(data));
         if(data !== 30){stop = true}

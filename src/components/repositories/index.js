@@ -7,7 +7,7 @@ import BookIco from "../images/bookIco";
 //https://docs.github.com/en/rest/git/refs
 
 const Repositories = () => {
-  const { githubState, getUserRepos, getUserStarred } = useGithub();
+  const { githubState, getUserRepos} = useGithub();
   const [hasUserForSearchrepos, setHasRepositories] = useState(false);
   const [searchText, setSearchText] = useState('');//every time I update the value of searchText, it renders the repositories list
   const [targetLanguage, setTargetLanguage] = useState('all');
@@ -53,31 +53,31 @@ const Repositories = () => {
       setSortingProperty('created_at');
     }else if (option === 'Name'){
       setSortingProperty('name');
-
-    }
+    }    
   }
 
-  const sortRepositories = (option) =>{ 
+  const sortedRepositories = () =>{ 
     //https://www.youtube.com/watch?v=RsFBsBep-hA
-    const compareDatesFunction = (a,b)=>{
-      //if a - b < 0   a comes first
-      const a_date = new Date(a[sortingProperty]).getTime();
-      const b_date = new Date(b[sortingProperty]).getTime();
-      return b_date - a_date;
+    
+    const sortingFunction = (a,b)=>{
+    //if a - b < 0   a comes first
+      if(sortingProperty == 'created_at' || sortingProperty == 'pushed_at' ){
+          const a_date = new Date(a[sortingProperty]).getTime();
+          const b_date = new Date(b[sortingProperty]).getTime();
+          return b_date - a_date;
+      }else{ 
+          return a.name.replace(/[^a-zA-Z0-9 ]/g, '').localeCompare(b.name.replace(/[^a-zA-Z0-9 ]/g, ''));
+      }
     }
-    const compareNamesFunction = (a,b)=>{
-      //if a - b < 0   a comes first
-      return a.name - a.name;
-    }
-
-
-    const sortedRepos = githubState.repositories.sort(compareDatesFunction);
+    
+    const sortedRepos = githubState.repositories.sort(sortingFunction)
     return sortedRepos;  
   }
 
   const languages = getLanguages(githubState.repositories);
   const repositoriesNumber = githubState.repositories.length;
   console.log('render');
+  
 
   return (
     <>
@@ -94,11 +94,11 @@ const Repositories = () => {
             <Filter languages={languages}
                     onDisplayLanguage={languageHandler} 
                     sortingOptions={sortingOptions}
-                    onSortRepositories={sortRepositories} 
+                    onSortRepositories={sortRepositoriesHandler} 
                     FindRepo={findRepoHandler}
             />
 
-              {sortRepositories().map((item) => {
+              {sortedRepositories().map((item) => {
                 //console.log(item);
                 return <RepositoryItem
                   key={item.id}
