@@ -54,8 +54,23 @@ export const HeaderWrapper = styled.header`
 `;
 
 export const LogoWrapper =  styled.div`
-      fill: #fff;
-     height: 40px;
-     margin-left: 30px;
-     margin-right:30px;
+    display:flex;
+    align-Items: center;
+    fill: #fff;
+    height: 40px;
+    margin-left: 30px;
+    margin-right:30px;
+
+    span{
+      margin-left: 10px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 22px;
+      letter-spacing: 4.8px;
+      word-spacing: 0px;
+      font-weight: 700;
+      text-decoration: none;
+      font-style: normal;
+      font-variant: normal;
+      text-transform: none;
+    }
 `

@@ -18,6 +18,7 @@ const Header = () => {
         <S.ContentWrapper>
           <S.LogoWrapper>
             <LogoIco/>
+            <span>GidHub</span>
           </S.LogoWrapper>
           <input
             type="text"
