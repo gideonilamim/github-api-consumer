@@ -7,7 +7,7 @@ import BookIco from "../images/bookIco";
 //https://docs.github.com/en/rest/git/refs
 
 const Repositories = () => {
-  const { githubState, getUserRepos} = useGithub();
+  const { githubState, getUserRepos, getUserStarred } = useGithub();
   const [hasUserForSearchrepos, setHasRepositories] = useState(false);
   const [searchText, setSearchText] = useState('');//every time I update the value of searchText, it renders the repositories list
   const [targetLanguage, setTargetLanguage] = useState('all');
@@ -17,6 +17,7 @@ const Repositories = () => {
   useEffect(() => {
     if (githubState.user.login) {
       getUserRepos(githubState.user.login);
+      getUserStarred(githubState.user.login);
     } 
     setHasRepositories(githubState.repositories);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -44,29 +45,41 @@ const Repositories = () => {
     setSearchText(repoName);
   }
 
-  const sortingOptions = ['Last updated','Creation date','Name','Stars'];
+  /*create an array of objects 
+  https://www.freecodecamp.org/news/javascript-array-of-objects-tutorial-how-to-create-update-and-loop-through-objects-using-js-array-methods/
+  */
+  const sortingOptions = [
+    {
+      title:'Last updated',
+      type:'pushed_at'
+    },{
+      title:'Creation date',
+      type:'created_at'
+    },{
+      title:'Name',
+      type:'name'
+    },{
+      title:'Stars',
+      type:'stars'
+    }];
 
   const sortRepositoriesHandler = (option) =>{
-    if (option === 'Last updated'){
-      setSortingProperty('pushed_at');
-    }else if (option === 'Creation date'){
-      setSortingProperty('created_at');
-    }else if (option === 'Name'){
-      setSortingProperty('name');
-    }    
+    let sortingType = sortingOptions.find(optionItem => optionItem.title === option).type;
+    setSortingProperty(sortingType);
   }
 
   const sortedRepositories = () =>{ 
     //https://www.youtube.com/watch?v=RsFBsBep-hA
-    
     const sortingFunction = (a,b)=>{
     //if a - b < 0   a comes first
       if(sortingProperty == 'created_at' || sortingProperty == 'pushed_at' ){
           const a_date = new Date(a[sortingProperty]).getTime();
           const b_date = new Date(b[sortingProperty]).getTime();
           return b_date - a_date;
-      }else{ 
+      }else if (sortingProperty == 'name'){ 
           return a.name.replace(/[^a-zA-Z0-9 ]/g, '').localeCompare(b.name.replace(/[^a-zA-Z0-9 ]/g, ''));
+      }else if (sortingProperty == 'stars'){
+        return b.stargazers_count - a.stargazers_count
       }
     }
     
@@ -76,7 +89,7 @@ const Repositories = () => {
 
   const languages = getLanguages(githubState.repositories);
   const repositoriesNumber = githubState.repositories.length;
-  console.log('render');
+  
   
 
   return (

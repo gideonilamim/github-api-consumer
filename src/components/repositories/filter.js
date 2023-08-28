@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import NavBar from "../UI/dropdownMenu";
+import React from "react";
 import MenuButton from "../UI/dropdownMenu";
 import * as S from "./styled"
 
@@ -9,26 +8,30 @@ const Filter = ({FindRepo, languages, sortingOptions, onSortRepositories, onDisp
             event.preventDefault();
         }
 
-        const sortbyHandler = (option) => {
-            onSortRepositories(option);
-        }
-
         const selectLanguage = (language) => {
             onDisplayLanguage(language)
         }
-
         const languageOptions = () =>{ 
             if(languages.length === 0){
                 return;
             }
             const languageOptions = ['all'];
             languages.map((language) => {
-                            languageOptions.push(language);
+                            return languageOptions.push(language);
             });
             return languageOptions;
         }
 
-      
+        const sortingOptionsTitles = () =>{
+            let options = [];
+            sortingOptions.map((option)=>{
+                options.push(option.title); 
+            })
+            return options;
+        }
+        const sortbyHandler = (option) => {
+            onSortRepositories(option);
+        }
 
         const sortBy = ["creation date", "Last updated", "stars"]
 
@@ -49,9 +52,9 @@ const Filter = ({FindRepo, languages, sortingOptions, onSortRepositories, onDisp
                         <MenuButton 
                             name="Sort" 
                             label='' 
-                            select={sortingOptions[0]}
+                            select={sortingOptionsTitles()[0]}
                             onSelect={sortbyHandler}
-                            content ={sortingOptions}/>
+                            content ={sortingOptionsTitles()}/>
                     </S.FormWrapper>
                 </S.FilterWrapper>;
 }

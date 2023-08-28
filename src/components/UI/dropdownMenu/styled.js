@@ -40,7 +40,7 @@ export const DropDownMenu = styled.div`
     display: flex;
 `
 
-export const dropDownBox = styled.div`
+export const DropDownBox = styled.div`
         color:#fff;
         position: absolute;
         display: flex;

@@ -1,4 +1,4 @@
-import React, {Children, useState} from "react";
+import React, { useState} from "react";
 import CheckedIco from "../../images/checkedIco";
 import * as S from './styled'
 
@@ -13,7 +13,7 @@ const MenuItem = ({children, onClick, selection}) =>{
     const items = children.map((item) =>{
           return <S.MenuItem onClick={()=>onItemClick(item)}>
             {item === selected && <CheckedIco className="checked"/>}
-            <a>{item}</a>
+            <button>{item}</button>
         </S.MenuItem>
     });
     return items;
@@ -25,9 +25,9 @@ const DropDownMenu = ({children, openToggle, onSelect, selection}) =>{
 
     return (<S.DropDownMenu>
                 <S.Background onClick={openToggle}/>
-                <S.dropDownBox>
+                <S.DropDownBox>
                     <MenuItem onClick={(item)=>onSelect(item)} selection={selection}>{children}</MenuItem>
-                </S.dropDownBox>
+                </S.DropDownBox>
             </S.DropDownMenu>);
 
 }
