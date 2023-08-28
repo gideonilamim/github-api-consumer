@@ -89,6 +89,12 @@ const Repositories = () => {
 
   const languages = getLanguages(githubState.repositories);
   const repositoriesNumber = githubState.repositories.length;
+
+  sortedRepositories().map((item)=>{
+    console.log("https://github.com/gideonilamim/Javascript-GAME-Bullseye");
+    return console.log("https://github.com/" + item.full_name);
+    
+  });
   
   
 
@@ -117,7 +123,7 @@ const Repositories = () => {
                   key={item.id}
                   name={item.name}
                   searchText={searchText}
-                  linkToRepo={item.full_name}
+                  linkToRepo={`https://github.com/${item.full_name}`}
                   fullName={item.full_name}
                   language={item.language}
                   targetLanguage={targetLanguage}
